@@ -21,8 +21,8 @@ for i=1:length(combos)
     R_dist_post=cat(1,R_dist_post,A);
 end
 
-[Opt_rank,M,Vs]=Consensus(R_dist_pre);%...Divisive clustering of pre-session redundant K
-[Opt_rank,M,Vs]=Consensus(R_dist_post);%...Divisive clustering of post-session redundant K
+[Opt_rank,M,Vs]=Divisive_Louvain(R_dist_pre);%...Divisive clustering of pre-session redundant K
+[Opt_rank,M,Vs]=Divisive_Louvain(R_dist_post);%...Divisive clustering of post-session redundant K
 
 Sn=.... %Number of synergistic modules to extract
 DataS=...%A [[No. of affected-side muscle interactions + No. of unaffected-side muscle interactions] x [No. of Participants x No. of Sessions]] 2d matrix
@@ -45,6 +45,6 @@ for i=1:length(combos)
     S_dist_post=cat(1,S_dist_post,A);
 end
 
-[Opt_rank,M,Vs]=Consensus(S_dist_pre);%...Divisive clustering of pre-session synergistic K
-[Opt_rank,M,Vs]=Consensus(S_dist_post);%...Divisive clustering of post-session synergistic K
+[Opt_rank,M,Vs]=Divisive_Louvain(S_dist_pre);%...Divisive clustering of pre-session synergistic K
+[Opt_rank,M,Vs]=Divisive_Louvain(S_dist_post);%...Divisive clustering of post-session synergistic K
 
