@@ -17,7 +17,7 @@ for i=1:Rn
 
 end
 
-[Opt_rank,M,Vs]=Consensus(R_dist_prepost);%...Divisive clustering of pre-to-post session redundant K
+[Opt_rank,M,Vs]=Divisive_Louvain(R_dist_prepost);%...Divisive clustering of pre-to-post session redundant K
 
 
 Sn=.... %Number of synergistic modules to extract
@@ -36,4 +36,4 @@ for i=1:Sn
 
 end
 
-[Opt_rank,M,Vs]=Consensus(S_dist_prepost);%...Divisive clustering of pre-to-post session synergistic K
+[Opt_rank,M,Vs]=Divisive_Louvain(S_dist_prepost);%...Divisive clustering of pre-to-post session synergistic K
