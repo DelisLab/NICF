@@ -1,1 +1,1 @@
-# Divisive_Kernel_Clustering
+# NICF
