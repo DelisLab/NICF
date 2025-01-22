@@ -19,12 +19,17 @@ combos_s=nchoosek(1:size(X{1},1),2);
 for i=1:length(X)
     v=[];
     net=X{i};
-    [M,Q]=community_louvain(net);
+    ms=[];
+    for iter=1:1000
+        [M,Q]=community_louvain(net);ms=[ms,M];
+    end
+    D = agreement(ms);
+    M = consensus_clustering(D,@community_louvain, 100, 1);
     for ii=1:length(combos_s)
         m1=M(combos_s(ii,1),:);
         m2=M(combos_s(ii,2),:);
         if isequal(m1,m2)
-            v=[v;1];
+            v=[v;net(combos_s(ii,1),combos_s(ii,2))+net(combos_s(ii,2),combos_s(ii,1))];
         else
             v=[v;0];
         end
@@ -33,8 +38,12 @@ for i=1:length(X)
 end
 Vs=sum(Vs,3);
 
-
-[M,Q]=community_louvain(Vs);
+ms=[];
+for iter=1:1000
+    [M,Q]=community_louvain(Vs);ms=[ms,M];
+end
+D = agreement(ms);
+M = consensus_clustering(D,@community_louvain, 100, 1);
 Opt_rank=max(M);
 
 end
