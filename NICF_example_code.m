@@ -1,20 +1,11 @@
 %%Example code for implementing the NICF
 
 
-Rn=.... %Number of redundant modules to extract
-DataR=...%Input matrix
-[w,h]=opnmf(DataR,Rn); %Projective non-negative matrix factorisation (PNMF)
-acals_R=reshape(permute(reshape(h,[Rn,%No. of participants , No. of tasks]),[2,1,3]),[%No. of participants,Rn,No. of tasks]);
+acals_R=reshape(permute(reshape(h,[Rn,%No. of participants , No. of task parameters etc.]),[2,1,3]),[%No. of participants,Rn,No. of task parameters etc.]);
 
-Sn=.... %Number of synergistic modules to extract
-DataS=...%Input matrix
-[w,h]=opnmf(DataS,Sn); %Projective non-negative matrix factorisation (PNMF)
-acals_S=reshape(permute(reshape(h,[Sn,%No. of participants , No. of Sessions]),[2,1,3]),[%No. of participants,Rn,No. of tasks]);
+acals_S=reshape(permute(reshape(h,[Sn,%No. of participants , No. of task parameters etc.]),[2,1,3]),[%No. of participants,Sn,No. of task parameters etc.]);
 
-UYZn=.... %Number of synergistic modules to extract
-DataUYZ=...%Input matrix
-[w,h]=opnmf(DataUYZ,UYZn); %Projective non-negative matrix factorisation (PNMF)
-acals_UYZ=reshape(permute(reshape(h,[UYZn,%No. of participants , No. of Sessions]),[2,1,3]),[%No. of participants,Rn,No. of tasks]);
+acals_UYZ=reshape(permute(reshape(h,[UYZn,%No. of participants , No. of task parameters etc.]),[2,1,3]),[%No. of participants,UYZn,No. of task parameters etc.]);
 
 acals=cat(2,acals_R,acals_S,acals_UYZ);
 
